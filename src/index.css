@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-canvas: #f7f7fa;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ededf2;
+  --text-primary: #07070b;
+  --text-secondary: #272730;
+  --text-muted: #525263;
+  --border-hairline: rgba(255, 30, 56, 0.24);
+  --accent-red: #e60023;
+  --accent-red-bright: #ff1e38;
+  --accent-white: #ffffff;
+}
+
+.dark {
+  --bg-canvas: #050507;
+  --bg-surface: #0b0b10;
+  --bg-elevated: #12121a;
+  --text-primary: #ffffff;
+  --text-secondary: #e2e2ea;
+  --text-muted: #9898a8;
+  --border-hairline: rgba(255, 30, 56, 0.3);
+  --accent-red: #ff1e38;
+  --accent-red-bright: #ff3b52;
+  --accent-white: #ffffff;
+}
+
+@layer base {
+  html {
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
+  }
+
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .font-editorial {
+    font-family: "Fraunces", Georgia, serif;
+  }
+
+  .font-mono-hud {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.headline-balance {
+  text-wrap: balance;
+}
+
+@layer components {
+  /* Corner-bracket reticle with Black, Red & White Neon styling */
+  .hud-reticle {
+    position: relative;
+  }
+}
+
+.hud-reticle::before,
+.hud-reticle::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  transition:
+    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.hud-reticle::before {
+  top: 0;
+  left: 0;
+  border-top: 1.5px solid #ff1e38;
+  border-left: 1.5px solid #ff1e38;
+}
+
+.hud-reticle::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1.5px solid #ffffff;
+  border-right: 1.5px solid #ffffff;
+}
+
+.hud-reticle:hover::before {
+  border-color: #ffffff;
+}
+
+.hud-reticle:hover::after {
+  border-color: #ff1e38;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

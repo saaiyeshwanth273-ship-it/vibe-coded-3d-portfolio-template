@@ -1,0 +1,14 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+firebase-applet-config.json
+!firebase-applet-config.example.json
+uploads/
+public/assets/aistudio/
+.playwright-cli/
+.template-git-repo/
